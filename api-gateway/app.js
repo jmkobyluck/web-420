@@ -1,8 +1,19 @@
+/*
+============================================
+; Title: Assignment 2.3
+; Author: Professor Krasso
+; Date: 10 May 2020
+; Modified By: Jonathan Kobyluck
+; Description: API Gateway Part II
+;===========================================
+*/
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var apiCatalog = require('./routes/api-catalog');
 
 var indexRouter = require('./routes/index');
 
@@ -11,10 +22,6 @@ mongoose.Promise = require('bluebird');
 
 var conn = 'mongodb+srv://admin:admin@buwebdev-cluster-1-duvph.mongodb.net/api-gateway?retryWrites=true&w=majority';
 
-/**
- * 
- Database Connection
- */
 mongoose.connect(conn, {
   promiseLibrary: require('bluebird')
 }).then(() => console.log('connection successful'))
@@ -31,6 +38,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api', apiCatalog);
 
 app.use('/', indexRouter);
 

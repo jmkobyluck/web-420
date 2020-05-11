@@ -8,8 +8,13 @@
 ;===========================================
 */
 
-var config = {};
-config.web = {};
-config.web.port = process.env.PORT || "3000";
-config.web.secret = 'topsecret';
-module.exports = config;
+var mongoose = require('mongoose');
+
+var userSchema = new mongoose.Schema({
+    username: String,
+    password: String,
+    email: String
+});
+
+module.exports = mongoose.model('User', userSchema);
+
