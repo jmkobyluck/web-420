@@ -1,10 +1,10 @@
 /*
 ============================================
-; Title: Assignment 2.3
+; Title: Assignment 4.3
 ; Author: Professor Krasso
-; Date: 10 May 2020
+; Date: 24 May 2020
 ; Modified By: Jonathan Kobyluck
-; Description: API Gateway Part II
+; Description: API Gateway Part III
 ;===========================================
 */
 
@@ -17,4 +17,10 @@ var userSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('User', userSchema);
-
+module.exports.add = (user, callback) => {
+    user.save(callback);
+};
+module.exports.getById = (id, callback) => {
+    var query = { _id: id };
+    User.findById(query, callback);
+};
