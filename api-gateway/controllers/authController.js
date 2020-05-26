@@ -15,7 +15,7 @@ var config = require('../config');
 
 // Register a new user on POST
 exports.user_register = function (req, res) {
-    // res.send('NOT IMPLEMENTED: User registration POST');
+
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
     var newUser = new User({

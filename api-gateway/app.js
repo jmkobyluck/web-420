@@ -23,9 +23,14 @@ mongoose.Promise = require('bluebird');
 var conn = 'mongodb+srv://admin:admin@buwebdev-cluster-1-duvph.mongodb.net/api-gateway?retryWrites=true&w=majority';
 
 mongoose.connect(conn, {
-  promiseLibrary: require('bluebird')
-}).then(() => console.log('connection successful'))
-  .catch((err) => console.error(err));
+  promiseLibrary: require('bluebird'),
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true
+}).then(() =>
+  console.log('connection successful'))
+  .catch((err) =>
+    console.error(err));
 
 var app = express();
 
