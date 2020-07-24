@@ -1,6 +1,6 @@
 {
   "name": "api-gateway",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -14,9 +14,14 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.20",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
+  },
+  "engines": {
+    "node": "12.16.3",
+    "npm": "6.13.1"
   }
 }
